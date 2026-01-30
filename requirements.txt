@@ -1,0 +1,3 @@
+deepdiff
+python-telegram-bot
+pymongo[srv]==3.12
