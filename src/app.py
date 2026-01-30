@@ -48,14 +48,15 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     user_id = update.message.chat.id
     jsonUpdate = parseUpdateToJson(update.message.text)
-    await update.message.reply_text("Welcome back, agent {}".format(jsonUpdate['agent_name']))
-    print("Received update from agent {}".format(jsonUpdate['agent_name']))
+    agentName = update.message.text.split("\n")[1].split(" ")[2] # a bit hacky
+    await update.message.reply_text("Welcome back, agent {}".format(agentName))
+    print("Received update from agent {}".format(agentName))
     
     lastUpdate = getlastUpdate(dbConn, user_id)
 
     if lastUpdate is not None and not firstDTIsBeforeEqualsSecondDT(jsonUpdate, lastUpdate):
         # TODO: exception handling
-        await update.message.reply_text(updateDiff(lastUpdate, jsonUpdate))
+        await update.message.reply_text(updateDiff(lastUpdate, jsonUpdate), parse_mode="HTML")
 
     try:    
         insertUpdate(dbConn, user_id, jsonUpdate)
@@ -63,7 +64,7 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         await update.message.reply_text(str(e))
 
     # always send progression msg
-    await update.message.reply_text(getProgression(jsonUpdate))
+    await update.message.reply_text(getProgression(jsonUpdate), parse_mode="HTML")
     return ConversationHandler.END
 
 

@@ -28,7 +28,7 @@ def getBadgeLevel(curr, tier_amount):
 def getProgression(json_update):
     nonOnyxSort = []
     onyxSort = []
-    badgeProgressionList = "Badge Progression\n\n"
+    badgeProgressionList = "<b>Badge Progression</b>\n\n"
     for key in json_update.keys():
         if key in badges:
             tier, progress = getBadgeLevel(json_update[key], badges[key]['tier_amount'])

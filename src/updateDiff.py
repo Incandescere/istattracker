@@ -2,7 +2,7 @@
 from deepdiff import DeepDiff
 
 def updateDiff(old_update_json, new_update_json):
-    result = "Stats gained\n\n"
+    result = "<b>Stats gained</b>\n\n"
     changed = DeepDiff(old_update_json, new_update_json).get('values_changed')
     for key, val in changed.items():
         # Clean key name
