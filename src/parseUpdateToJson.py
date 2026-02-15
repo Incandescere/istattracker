@@ -17,8 +17,8 @@ historic_key_list = [
   'largest_field_mus_x_days', 'forced_drone_recalls', 'distance_walked',
   'kinetic_capsules_completed', 'unique_missions_completed', 'research_bounties_completed',
   'research_days_completed', 'mission_day(s)_attended', 'nl-1331_meetup(s)_attended',
-  'first_saturday_events', 'second_sunday_events', '+beta_tokens', 'agents_recruited',
-  'recursions', 'months_subscribed', '+gamma_tokens'
+  'first_saturday_events', 'second_sunday_events', 'agents_recruited',
+  'recursions', 'months_subscribed', '+gamma_tokens', '+gamma_link_points'
 ]
 
 def parseUpdateToJson(raw_update):
