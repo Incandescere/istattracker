@@ -113,7 +113,7 @@ badges = {
     # NA
 
     # Health
-    "distance_walked_km": {
+    "distance_walked": {
         "name": "Trekker",
         "tier_amount": [10, 100, 300, 1000, 2500],
         "description": "Walk a long distance."
