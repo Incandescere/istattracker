@@ -48,7 +48,7 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     user_id = update.message.chat.id
     jsonUpdate = parseUpdateToJson(update.message.text)
-    if json_update['time_span'] != "all_time":
+    if jsonUpdate['time_span'] != "all_time":
         await update.message.reply_text("Send me the <b>ALL TIME</b> profile update instead.", parse_mode="HTML")
         return ConversationHandler.END
 
