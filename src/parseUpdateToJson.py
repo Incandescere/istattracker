@@ -39,7 +39,7 @@ def parseUpdateToJson(raw_update):
             json_update[statname] = values_list[value_counter]
             value_counter += 1
             statname = ''
-    print(json_update)
+    # print(json_update)
     return json_update
 
 

@@ -48,6 +48,10 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     user_id = update.message.chat.id
     jsonUpdate = parseUpdateToJson(update.message.text)
+    if json_update['time_span'] != "all_time":
+        await update.message.reply_text("Send me the <b>ALL TIME</b> profile update instead.", parse_mode="HTML")
+        break
+
     agentName = update.message.text.split("\n")[1].split(" ")[2] # a bit hacky
     await update.message.reply_text("Welcome back, agent {}".format(agentName))
     print("Received update from agent {}".format(agentName))
@@ -63,7 +67,7 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     except Exception as e:
         await update.message.reply_text(str(e))
 
-    # always send progression msg
+    
     await update.message.reply_text(getProgression(jsonUpdate), parse_mode="HTML")
     return ConversationHandler.END
 

@@ -43,10 +43,6 @@ def insertUpdate(collection, user_id, update):
     # TODO: error handling
     lastUpdate = getlastUpdate(collection, user_id)
 
-    
-    if update['time_span'] != "all_time":
-        raise Exception("Send me the ALL TIME update instead")
-
     if lastUpdate is not None:
         if lastUpdate['agent_name'] == update['agent_name'] and firstDTIsBeforeEqualsSecondDT(update, lastUpdate):
             raise Exception("Current update must be after the last update ({})".format(getIsoDtFromJsonUpdate(lastUpdate)))
