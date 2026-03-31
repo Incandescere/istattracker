@@ -73,7 +73,7 @@ def getLastUpdate(collection, user_id):
 def delete4thNewest(collection, user_id):
     # TODO: error handling
     toDelete = collection.find_one(
-        {"user_id": "user_id"},
+        {"user_id": user_id},
         sort=[("created_at", DESCENDING)],
         skip=3
     )
