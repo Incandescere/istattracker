@@ -69,7 +69,6 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     
     delete4thNewest(dbConn, user_id)
 
-    ""
     await update.message.reply_text(getProgression(jsonUpdate), parse_mode="HTML")
     return ConversationHandler.END
 

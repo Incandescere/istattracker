@@ -41,7 +41,7 @@ def insertUpdate(collection, user_id, update):
     # check if same agentname
 
     # TODO: error handling
-    lastUpdate = getlastUpdate(collection, user_id)
+    lastUpdate = getLastUpdate(collection, user_id)
 
     if lastUpdate is not None:
         if lastUpdate['agent_name'] == update['agent_name'] and firstDTIsBeforeEqualsSecondDT(update, lastUpdate):
@@ -90,8 +90,8 @@ def delete4thNewest(collection, user_id):
 # result = insertUpdate(dbConn, 1, jsonUpdate)
 # print(result)
 
-# getTest = getlastUpdate(dbConn, 1)
+# getTest = getLastUpdate(dbConn, 1)
 # print(getTest)
 
-# result = getlastUpdate(dbConn, 231395341)
+# result = getLastUpdate(dbConn, 231395341)
 # print(result)
