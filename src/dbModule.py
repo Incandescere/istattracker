@@ -57,7 +57,7 @@ def insertUpdate(collection, user_id, update):
 
 # ============================================================================================================================
 
-def getlastUpdate(collection, user_id):
+def getLastUpdate(collection, user_id):
     # TODO: error handling
     result = collection.find_one(
         {"user_id": user_id},
@@ -67,6 +67,19 @@ def getlastUpdate(collection, user_id):
         ]        
     )
     return None if result is None else result['update']
+
+# ============================================================================================================================
+
+def delete4thNewest(collection, user_id):
+    # TODO: error handling
+    toDelete = collection.find_one(
+        {"user_id": "user_id"},
+        sort=[("created_at", DESCENDING)],
+        skip=3
+    )
+
+    if toDelete:
+        collection.find_one_and_delete({"_id": toDelete["_id"]})
 
 # ============================================================================================================================
 

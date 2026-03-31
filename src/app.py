@@ -56,7 +56,7 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     await update.message.reply_text("Welcome back, agent {}".format(agentName))
     print("Received update from agent {}".format(agentName))
     
-    lastUpdate = getlastUpdate(dbConn, user_id)
+    lastUpdate = getLastUpdate(dbConn, user_id)
 
     if lastUpdate is not None and not firstDTIsBeforeEqualsSecondDT(jsonUpdate, lastUpdate):
         # TODO: exception handling
@@ -66,6 +66,8 @@ async def processUpdate(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
         insertUpdate(dbConn, user_id, jsonUpdate)
     except Exception as e:
         await update.message.reply_text(str(e))
+    
+    delete4thNewest(dbConn, user_id)
 
     ""
     await update.message.reply_text(getProgression(jsonUpdate), parse_mode="HTML")
