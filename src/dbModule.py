@@ -1,6 +1,6 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-from pymongo import DESCENDING
+from pymongo import DESCENDING, ASCENDING
 
 from datetime import datetime
 
@@ -36,8 +36,6 @@ def getDbConnection(mongoUser, mongoPassword):
 # ============================================================================================================================
 
 def insertUpdate(collection, user_id, update):
-    # check if update is all_time
-    # check if update is outdated
     # check if same agentname
 
     # TODO: error handling
@@ -72,9 +70,10 @@ def getLastUpdate(collection, user_id):
 
 def delete4thNewest(collection, user_id):
     # TODO: error handling
+    #Better to sort by lifetime ap, as it will only ever increase
     toDelete = collection.find_one(
         {"user_id": user_id},
-        sort=[("created_at", DESCENDING)],
+        sort=[("update.lifetime_ap", DESCENDING)],
         skip=3
     )
 
@@ -84,8 +83,9 @@ def delete4thNewest(collection, user_id):
 # ============================================================================================================================
 
 # Testing db connections
-
 # dbConn = getDbConnection(mongoUser, mongoPassword)
+# delete4thNewest(dbConn, 231395341)
+
 # jsonUpdate = parseUpdateToJson(mockUpdate)
 # result = insertUpdate(dbConn, 1, jsonUpdate)
 # print(result)
