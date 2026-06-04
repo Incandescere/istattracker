@@ -21,10 +21,16 @@ logging.getLogger("httpx").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
 # Global db conn
-# TODO: add secret reference from file
+# mongoAtlasUser = os.getenv("MONGO_ATLAS_USER")
+# mongoAtlasPassword = os.getenv("MONGO_ATLAS_PASSWORD")
+
+# dbConn = getDbConnection(mongoAtlasUser, mongoAtlasPassword)
+
 mongoUser = os.getenv("MONGO_USER")
 mongoPassword = os.getenv("MONGO_PASSWORD")
+
 dbConn = getDbConnection(mongoUser, mongoPassword)
+
 
 # ============================================================================================================================
 

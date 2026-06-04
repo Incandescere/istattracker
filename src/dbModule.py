@@ -16,13 +16,20 @@ from parseUpdateToJson import *
 def getDbConnection(mongoUser, mongoPassword):
     # TODO: error handling
 
-    uri = "mongodb+srv://{}:{}@istattracker.caqxjvw.mongodb.net/?appName=istattracker".format(mongoUser, mongoPassword)
+    #If db is on mongodb atlas
+    # uri = "mongodb+srv://{}:{}@istattracker.caqxjvw.mongodb.net/?appName=istattracker".format(mongoUser, mongoPassword)
+    # client = MongoClient(uri, server_api=ServerApi('1'))
+    # # Select database and collection
+    # db = client["istattracker-db"]
+    # collection = db["istattracker-collection-updates"]
 
-    client = MongoClient(uri, server_api=ServerApi('1'))
 
-    # Select database and collection
-    db = client["istattracker-db"]
-    collection = db["istattracker-collection-updates"]
+    #If db is selfhosted on same docker network with container name "mongodb"
+    uri = "mongodb://{}:{}@mongodb:27017/istattracker?authSource=istattracker".format(mongoUser, mongoPassword)
+    client = MongoClient(uri)  # No ServerApi needed for self-hosted
+    db = client["istattracker"]
+    collection = db["istattracker-updates"]
+
 
     # Send a ping to confirm a successful connection
     try:
