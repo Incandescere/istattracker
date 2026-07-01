@@ -18,7 +18,7 @@ historic_key_list = [
   'kinetic_capsules_completed', 'unique_missions_completed', 'research_bounties_completed',
   'research_days_completed', 'mission_day(s)_attended', 'nl-1331_meetup(s)_attended',
   'first_saturday_events', 'second_sunday_events', 'agents_recruited',
-  'recursions', 'months_subscribed', 'apollo_tokens'
+  'recursions', 'months_subscribed', 'orion_tokens', 'orion_link_and_field_points', 'apollo_tokens'
 ]
 
 def parseUpdateToJson(raw_update):
