@@ -1,4 +1,5 @@
 from datetime import datetime
+import logging
 
 historic_key_list = [
   'time_span', 'agent_name', 'agent_faction', 'date_(yyyy-mm-dd)', 'time_(hh:mm:ss)', 'level',
@@ -22,12 +23,13 @@ historic_key_list = [
 ]
 
 def parseUpdateToJson(raw_update):
+    logging.info("RAW REPR: %r", raw_update)  # shows hidden/invisible characters
     keys, values = raw_update.lower().strip().split('\n')
     values = values.replace("all time", "all_time", 1)
 
     keys_list = keys.strip().split()
     values_list = values.strip().split()
-
+    logging.info("keys_list len=%d values_list len=%d", len(keys_list), len(values_list))
     json_update = {}
     value_counter = 0
     statname = ''
@@ -36,10 +38,14 @@ def parseUpdateToJson(raw_update):
             statname += '_'
         statname += word
         if statname in historic_key_list:
+            if value_counter >= len(values_list):
+                raise ValueError(f"Ran out of values at key '{statname}'")
             json_update[statname] = values_list[value_counter]
             value_counter += 1
             statname = ''
-    # print(json_update)
+    missing = set(historic_key_list) - json_update.keys()
+    if missing:
+        raise ValueError(f"Missing keys after parse: {missing}")
     return json_update
 
 
