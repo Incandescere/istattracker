@@ -25,8 +25,8 @@ def parseUpdateToJson(raw_update):
     keys, values = raw_update.lower().strip().split('\n')
     values = values.replace("all time", "all_time", 1)
 
-    keys_list = keys.strip().split(' ')
-    values_list = values.strip().split(' ')
+    keys_list = keys.strip().split()
+    values_list = values.strip().split()
 
     json_update = {}
     value_counter = 0
