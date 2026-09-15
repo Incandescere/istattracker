@@ -12,7 +12,7 @@ def getBadgeLevel(curr, tier_amount):
         return "Locked", progress 
 
     # case onyx
-    if curr > tier_amount[-1]:
+    if curr >= tier_amount[-1]:
         progress = curr // tier_amount[-1]
         return badge_tier[-1], progress
 
