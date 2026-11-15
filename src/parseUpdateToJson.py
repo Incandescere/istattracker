@@ -21,7 +21,7 @@ historic_key_list = [
   'first_saturday_events', 'second_sunday_events',
   'orion_tokens', 'orion_link_and_field_points',
   'apollo_tokens', 'apollo_mod_battle_points',
-  'cygnus_tokens',
+  'cygnus_tokens', 'cygnus_battle_beacons',
   'agents_recruited', 'recursions', 'months_subscribed'
 ]
 
