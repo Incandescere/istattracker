@@ -20,8 +20,7 @@ historic_key_list = [
   'research_days_completed', 'mission_day(s)_attended', 'nl-1331_meetup(s)_attended',
   'first_saturday_events', 'second_sunday_events',
   'orion_tokens', 'orion_link_and_field_points',
-  'apollo_tokens', 'apollo_mod_battle_points',
-  'cygnus_tokens', 'cygnus_battle_beacons',
+  'cygnus_tokens', 'cygnus_battle_beacons', 'cygnus_reso_points',
   'agents_recruited', 'recursions', 'months_subscribed'
 ]
 
